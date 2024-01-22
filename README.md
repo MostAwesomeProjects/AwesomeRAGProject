@@ -20,4 +20,8 @@
 - [QAnything](https://github.com/netease-youdao/QAnything/tree/master)
 - [BCEmbedding](https://github.com/netease-youdao/BCEmbedding)
 - [LangChain](https://python.langchain.com/docs/get_started/quickstart)
-- [Gradio]()
+- [Gradio](https://www.gradio.app/docs/interface)
+
+## 项目主力
+- [hzsun1995](https://github.com/hzsun1995)
+- [Cyydz](https://github.com/Cyydz)
