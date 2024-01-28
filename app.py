@@ -15,14 +15,15 @@ from openxlab.model import download
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 os.makedirs('model', exist_ok=True)
-os.makedirs('internlm2-chat-7b', exist_ok=True)
+os.makedirs('internlm-chat-7b', exist_ok=True)
 #download(model_repo='OpenLMLab/internlm2-chat-7b', output='internlm2-chat-7b')
+download(model_repo='OpenLMLab/InternLM-chat-7b', output='internlm-chat-7b')
 
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
 hf_token = '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'
 
-os.system(f'huggingface-cli download --force-download internlm/internlm2-chat-7b --local-dir internlm2-chat-7b --token {hf_token}')
+#os.system(f'huggingface-cli download --force-download internlm/internlm2-chat-7b --local-dir internlm2-chat-7b --token {hf_token}')
 os.system(f'huggingface-cli download --force-download maidalun1020/bce-embedding-base_v1 --local-dir model/bce-embedding-base_v1 --token {hf_token}')
 os.system(f'huggingface-cli download --force-download maidalun1020/bce-reranker-base_v1 --local-dir model/bce-reranker-base_v1 --token {hf_token}')
 
@@ -44,7 +45,7 @@ def load_chain():
     reranker = BCERerank(**reranker_args)
     retriever = loaded_index.as_retriever(search_type="similarity", search_kwargs={"score_threshold": 0.3, "k": 50})
     compression_retriever = ContextualCompressionRetriever(base_compressor=reranker, base_retriever=retriever)
-    llm = InternLM_LLM(model_path="internlm2-chat-7b")
+    llm = InternLM_LLM(model_path="internlm-chat-7b")
 
     template = """使用以下上下文来回答用户的问题。如果你不知道答案，就说你不知道。总是使用中文回答。
     问题: {question}
