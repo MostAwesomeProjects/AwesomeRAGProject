@@ -5,9 +5,8 @@
 
 ## 模型demo
 https://openxlab.org.cn/apps/detail/alias-z/Sentencing_Assistant
-目前智能用InternLM-Chat-7B部署，还比较智障
-![](img/demo.png)
-
+目前只能用InternLM-Chat-7B部署OpenXLab，还比较智障
+<img src="img/demo.png" width="1920" height="1080" />
 
 ## 架构参考
 ![](img/img.png)
