@@ -18,12 +18,11 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 os.makedirs('model', exist_ok=True)
 
-os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
-os.environ['HUGGINGFACE_TOKEN'] = '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'
-os.system('huggingface-cli login $HUGGINGFACE_TOKEN')
-os.system('huggingface-cli download --resume-download internlm/internlm2-chat-7b --local-dir internlm2-chat-7b')
-os.system('huggingface-cli download --resume-download maidalun1020/bce-embedding-base_v1 --local-dir model/bce-embedding-base_v1')
-os.system('huggingface-cli download --resume-download maidalun1020/bce-reranker-base_v1 --local-dir model/bce-reranker-base_v1')
+hf_token = 'https://hf-mirror.com'
+
+os.system(f'huggingface-cli download --force-download internlm/internlm2-chat-7b --local-dir internlm2-chat-7b --token {hf_token}')
+os.system(f'huggingface-cli download --force-download maidalun1020/bce-embedding-base_v1 --local-dir model/bce-embedding-base_v1 --token {hf_token}')
+os.system(f'huggingface-cli download --force-download maidalun1020/bce-reranker-base_v1 --local-dir model/bce-reranker-base_v1 --token {hf_token}')
 
 
 def load_chain():
