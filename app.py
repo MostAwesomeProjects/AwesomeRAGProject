@@ -32,7 +32,7 @@ def load_chain():
     # 加载本地索引
     embedding_model_name =  './model/bce-embedding-base_v1'  # 'maidalun1020/bce-embedding-base_v1'
     embedding_model_kwargs = {'device': 'cuda:0'}
-    embedding_encode_kwargs = {'batch_size': 32, 'normalize_embeddings': True, 'show_progress_bar': False}
+    embedding_encode_kwargs = {'batch_size': 24, 'normalize_embeddings': True, 'show_progress_bar': False}
     embeddings = HuggingFaceEmbeddings(
                       model_name=embedding_model_name,
                       model_kwargs=embedding_model_kwargs,
@@ -40,9 +40,9 @@ def load_chain():
                 )
     loaded_index = FAISS.load_local('./faiss_index', embeddings)
     # 构建检索器
-    reranker_args = {'model': './model/bce-reranker-base_v1', 'top_n': 50, 'device': 'cuda:0'}
+    reranker_args = {'model': './model/bce-reranker-base_v1', 'top_n': 25, 'device': 'cuda:0'}
     reranker = BCERerank(**reranker_args)
-    retriever = loaded_index.as_retriever(search_type="similarity", search_kwargs={"score_threshold": 0.3, "k": 50})
+    retriever = loaded_index.as_retriever(search_type="similarity", search_kwargs={"score_threshold": 0.3, "k": 25})
     compression_retriever = ContextualCompressionRetriever(base_compressor=reranker, base_retriever=retriever)
     llm = InternLM_LLM(model_path = "internlm2-chat-7b")
 
