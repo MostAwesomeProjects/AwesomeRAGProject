@@ -24,7 +24,7 @@ rpds-py==0.17.1
 oss2
 #oss2==2.18.4
 einops==0.7.0
-
+requests~=2.28.2
 
 
 
