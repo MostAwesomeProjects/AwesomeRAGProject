@@ -3,6 +3,12 @@
 ## 项目简介
 一个基于《中华人民共和国刑法》的知识库检索助手
 
+## 模型demo
+https://openxlab.org.cn/apps/detail/alias-z/Sentencing_Assistant
+目前智能用InternLM-Chat-7B部署，还比较智障
+![](img/demo.png)
+
+
 ## 架构参考
 ![](img/img.png)
 
