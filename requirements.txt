@@ -19,3 +19,4 @@ regex
 pypdf
 openxlab
 rpds
+oss2
