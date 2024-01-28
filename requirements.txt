@@ -17,7 +17,6 @@ sentence-transformers==2.2.2
 faiss-gpu==1.7.2
 regex==2023.12.25 
 pypdf==4.0.1
-openxlab==0.0.34
 rpds==1.7.1
 rpds-py==0.17.1
 oss2==2.17.0
