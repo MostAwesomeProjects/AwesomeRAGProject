@@ -10,24 +10,18 @@ from langchain_community.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores.utils import DistanceStrategy
 from langchain.retrievers import ContextualCompressionRetriever
-from openxlab.model import download
+#from openxlab.model import download
 
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-download(model_repo='OpenLMLab/internlm2-chat-7b', output='internlm2-chat-7b')
+#download(model_repo='OpenLMLab/internlm2-chat-7b', output='internlm2-chat-7b')
 
 os.makedirs('model', exist_ok=True)
-
-def download_file_from_google_drive(url, destination):
-    response = requests.get(url, stream=True)
-    with open(destination, "wb") as file:
-        for chunk in response.iter_content(chunk_size=1024): 
-            if chunk:
-                file.write(chunk)
 
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 os.environ['HUGGINGFACE_TOKEN'] = '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'
 os.system('huggingface-cli login $HUGGINGFACE_TOKEN')
+os.system('huggingface-cli download --resume-download internlm/internlm2-chat-7b --local-dir internlm2-chat-7b')
 os.system('huggingface-cli download --resume-download maidalun1020/bce-embedding-base_v1 --local-dir model/bce-embedding-base_v1')
 os.system('huggingface-cli download --resume-download maidalun1020/bce-reranker-base_v1 --local-dir model/bce-reranker-base_v1')
 
