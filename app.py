@@ -26,7 +26,6 @@ def download_file_from_google_drive(url, destination):
                 file.write(chunk)
 
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
-os.environ['HUGGINGFACE_TOKEN'] = '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'
 os.system('huggingface-cli login $HUGGINGFACE_TOKEN')
 os.system('huggingface-cli download --resume-download maidalun1020/bce-embedding-base_v1 --local-dir model/bce-embedding-base_v1')
 os.system('huggingface-cli download --resume-download maidalun1020/bce-reranker-base_v1 --local-dir model/bce-reranker-base_v1')
